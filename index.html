@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlacementHub - Student Placement Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<div id="loginPage" class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            <div class="logo-icon">🎓</div>
+            <h1>PlacementHub</h1>
+            <p>Student Placement Portal</p>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <div class="password-box">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="password-toggle"
+                    >
+                        👁
+                    </button>
+                </div>
+            </div>
+
+            <div class="login-options">
+
+                <label class="remember">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Remember me</span>
+                </label>
+
+                <button
+                    type="button"
+                    id="forgotPassword"
+                    class="forgot-btn"
+                >
+                    Forgot Password?
+                </button>
+
+            </div>
+
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <p class="login-footer">
+            Student Placement Management System
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<div id="dashboard" class="dashboard hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🎓
+            </div>
+
+            <div>
+                <h2>PlacementHub</h2>
+                <span>Student Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="nav-item active"
+                data-section="dashboardSection"
+            >
+                <span>🏠</span>
+                Dashboard
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="jobsSection"
+            >
+                <span>💼</span>
+                Job Openings
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="applicationsSection"
+            >
+                <span>📋</span>
+                Applications
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="analyticsSection"
+            >
+                <span>📊</span>
+                Analytics
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="notificationsSection"
+            >
+                <span>🔔</span>
+                Notifications
+                <span class="notification-count">3</span>
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="profileSection"
+            >
+                <span>👤</span>
+                Profile
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn" class="logout-btn">
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-menu">
+                <button id="menuBtn">☰</button>
+            </div>
+
+            <div class="topbar-title">
+                <h3>Student Placement Dashboard</h3>
+                <p>Manage your placement journey</p>
+            </div>
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification-button"
+                    id="notificationBtn"
+                >
+                    🔔
+                    <span>3</span>
+                </button>
+
+                <div class="user-mini">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Student</strong>
+                        <small>B.Tech IT</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD SECTION ================= -->
+
+        <section
+            id="dashboardSection"
+            class="page-section active-section"
+        >
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <p class="small-text">
+                        Welcome back 👋
+                    </p>
+
+                    <h1>
+                        Find your dream career
+                    </h1>
+
+                    <p>
+                        Explore job opportunities and track your placement journey.
+                    </p>
+
+                </div>
+
+                <div class="welcome-icon">
+                    💼
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pink">
+                        💼
+                    </div>
+
+                    <div>
+                        <span>Total Applications</span>
+                        <h2 id="totalApplications">3</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🎯
+                    </div>
+
+                    <div>
+                        <span>Shortlisted</span>
+                        <h2 id="shortlistedCount">1</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        📅
+                    </div>
+
+                    <div>
+                        <span>Interviews</span>
+                        <h2 id="interviewCount">1</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        🏆
+                    </div>
+
+                    <div>
+                        <span>Selected</span>
+                        <h2 id="selectedCount">0</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECOMMENDED JOBS -->
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Recommended Jobs</h2>
+                    <p>Latest opportunities for you</p>
+                </div>
+
+                <button
+                    class="view-all-btn"
+                    data-go="jobsSection"
+                >
+                    View All
+                </button>
+
+            </div>
+
+            <div id="dashboardJobs" class="job-grid"></div>
+
+
+            <!-- UPCOMING INTERVIEW -->
+
+            <div class="section-heading interview-heading">
+
+                <div>
+                    <h2>Upcoming Interviews</h2>
+                    <p>Keep track of your interview schedule</p>
+                </div>
+
+            </div>
+
+            <div class="interview-card">
+
+                <div class="company-logo">
+                    I
+                </div>
+
+                <div class="interview-info">
+
+                    <h3>Infosys - Software Developer</h3>
+
+                    <p>
+                        📅 October 15, 2026
+                    </p>
+
+                    <p>
+                        🕐 10:30 AM
+                    </p>
+
+                </div>
+
+                <span class="status-badge interview">
+                    Interview
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= JOBS SECTION ================= -->
+
+        <section
+            id="jobsSection"
+            class="page-section"
+        >
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Job Openings</h1>
+                    <p>Explore available placement opportunities</p>
+                </div>
+
+            </div>
+
+
+            <div class="filters">
+
+                <div class="search-box">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="jobSearch"
+                        placeholder="Search jobs or companies..."
+                    >
+
+                </div>
+
+
+                <select id="jobTypeFilter">
+
+                    <option value="all">
+                        All Job Types
+                    </option>
+
+                    <option value="Full Time">
+                        Full Time
+                    </option>
+
+                    <option value="Internship">
+                        Internship
+                    </option>
+
+                </select>
+
+
+                <select id="locationFilter">
+
+                    <option value="all">
+                        All Locations
+                    </option>
+
+                    <option value="Chennai">
+                        Chennai
+                    </option>
+
+                    <option value="Bangalore">
+                        Bangalore
+                    </option>
+
+                    <option value="Hyderabad">
+                        Hyderabad
+                    </option>
+
+                    <option value="Pune">
+                        Pune
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="jobGrid" class="job-grid"></div>
+
+        </section>
+
+
+        <!-- ================= APPLICATIONS ================= -->
+
+        <section
+            id="applicationsSection"
+            class="page-section"
+        >
+
+            <div class="page-header">
+
+                <div>
+                    <h1>My Applications</h1>
+                    <p>Track your job applications</p>
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Company</th>
+                            <th>Position</th>
+                            <th>Applied Date</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="applicationTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANALYTICS ================= -->
+
+        <section
+            id="analyticsSection"
+            class="page-section"
+        >
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Placement Analytics</h1>
+                    <p>View your application statistics</p>
+                </div>
+
+            </div>
+
+
+            <div class="analytics-grid">
+
+                <div class="analytics-card">
+
+                    <span>Total Applications</span>
+
+                    <h2 id="analyticsApplications">
+                        3
+                    </h2>
+
+                    <p>Applications submitted</p>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <span>Shortlist Rate</span>
+
+                    <h2 id="shortlistRate">
+                        33%
+                    </h2>
+
+                    <p>Based on applications</p>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <span>Interview Rate</span>
+
+                    <h2 id="interviewRate">
+                        33%
+                    </h2>
+
+                    <p>Based on applications</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-card">
+
+                <h2>Application Overview</h2>
+
+                <div class="simple-chart">
+
+                    <div class="chart-bar">
+
+                        <span>Applied</span>
+
+                        <div>
+                            <i style="width: 80%"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-bar">
+
+                        <span>Shortlisted</span>
+
+                        <div>
+                            <i style="width: 35%"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-bar">
+
+                        <span>Interview</span>
+
+                        <div>
+                            <i style="width: 30%"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-bar">
+
+                        <span>Selected</span>
+
+                        <div>
+                            <i style="width: 10%"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOTIFICATIONS ================= -->
+
+        <section
+            id="notificationsSection"
+            class="page-section"
+        >
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Notifications</h1>
+                    <p>Latest placement updates</p>
+                </div>
+
+                <button
+                    id="markAllRead"
+                    class="secondary-btn"
+                >
+                    Mark all as read
+                </button>
+
+            </div>
+
+
+            <div class="notification-list">
+
+                <div class="notification-card unread">
+
+                    <div class="notification-icon">
+                        📅
+                    </div>
+
+                    <div>
+
+                        <h3>Interview Scheduled</h3>
+
+                        <p>
+                            Your Infosys interview is scheduled for October 15, 2026.
+                        </p>
+
+                        <small>
+                            2 hours ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notification-card unread">
+
+                    <div class="notification-icon">
+                        🎯
+                    </div>
+
+                    <div>
+
+                        <h3>Application Shortlisted</h3>
+
+                        <p>
+                            Your application for TCS has been shortlisted.
+                        </p>
+
+                        <small>
+                            Yesterday
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notification-card unread">
+
+                    <div class="notification-icon">
+                        📢
+                    </div>
+
+                    <div>
+
+                        <h3>New Placement Drive</h3>
+
+                        <p>
+                            A new placement opportunity is available.
+                        </p>
+
+                        <small>
+                            2 days ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <section
+            id="profileSection"
+            class="page-section"
+        >
+
+            <div class="page-header">
+
+                <div>
+                    <h1>My Profile</h1>
+                    <p>Manage your student profile</p>
+                </div>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <div class="profile-top">
+
+                    <div class="large-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <h2>Student Name</h2>
+
+                        <p>
+                            B.Tech Information Technology
+                        </p>
+
+                        <span class="profile-status">
+                            Active Student
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-details">
+
+                    <div>
+                        <label>Email</label>
+                        <strong>student@example.com</strong>
+                    </div>
+
+                    <div>
+                        <label>Department</label>
+                        <strong>Information Technology</strong>
+                    </div>
+
+                    <div>
+                        <label>College</label>
+                        <strong>Engineering College</strong>
+                    </div>
+
+                    <div>
+                        <label>Graduation Year</label>
+                        <strong>2027</strong>
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="editProfileBtn"
+                    class="primary-btn"
+                >
+                    Edit Profile
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+    <span id="toastMessage">
+        Message
+    </span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
